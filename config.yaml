@@ -13,7 +13,7 @@ filters:
   exclude_keywords:
     - "מרתף"
   min_rooms: 2
-  min_size_sqm: 500
+  min_size_sqm: 50
   max_price_nis: 7000
 
 sources:
