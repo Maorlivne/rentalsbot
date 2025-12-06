@@ -2,9 +2,9 @@ email:
   smtp_host: "smtp.gmail.com"
   smtp_port: 587
   from_name: "דירות ת״א - עדכון יומי"
-  from_email: "maorlivne2@gmail.com"
+  from_email: "maorlivne@gmail.com"
   to_emails:
-    - "maorlivne2@gmail.com"
+    - "maorlivne@gmail.com"
 
 filters:
   must_include_keywords:
