@@ -1,4 +1,3 @@
-\
 import re
 import os
 import smtplib
@@ -144,10 +143,41 @@ def fetch_listings_for_source(source, filters):
         abs_url = normalize_url(url, a.get("href"))
         if not abs_url:
             continue
+
+        # --- FILTER OUT NON-REAL LISTINGS ---
+        # URL-based filters for "look-alike" / AI suggestions
+        if any(marker in abs_url for marker in [
+            "look_alike",
+            "lookalike",
+            "suggest",
+            "recommended",
+            "recommendation",
+            "rec_type",
+            "spot=look_alike",
+            "component-type=look_alike",
+        ]):
+            continue
+
+        text = extract_text_nearby(a)
+
+        # Text patterns that appear ONLY in Yad2 AI-suggested listings
+        bad_text_markers = [
+            "נכס דומה לחיפוש שבוצע",
+            "המלצה זו מבוססת",
+            "מודל למציאת נכסים",
+            "שווה בדיקה",
+            "מודעה נשמרה",
+            "מומלצת עבורך",
+            "מומלץ",
+        ]
+        if any(bt in text for bt in bad_text_markers):
+            continue
+        # --- END FILTERING ---
+
         if is_listing_link(abs_url, domain_hint):
-            text = extract_text_nearby(a)
             if passes_filters(text, filters):
                 items.append({"url": abs_url, "text": text})
+
     return name, items, None
 
 def mark_and_filter_new(conn, source_name, items):
@@ -227,6 +257,14 @@ def main():
             errors.append(err)
         new_items = mark_and_filter_new(conn, source_name, items)
         groups.append({"source": source_name, "items": new_items})
+
+    # Count how many NEW listings exist
+    total_new = sum(len(g["items"]) for g in groups)
+
+    # Do not send email if nothing new
+    if total_new == 0:
+        print("No new listings – no email sent.")
+        return
 
     tz = pytz.timezone("Asia/Jerusalem")
     today = datetime.now(tz).strftime("%d.%m.%Y")
