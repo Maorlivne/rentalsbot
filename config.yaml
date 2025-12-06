@@ -2,9 +2,9 @@ email:
   smtp_host: "smtp.gmail.com"
   smtp_port: 587
   from_name: "דירות ת״א - עדכון יומי"
-  from_email: "you@example.com"
+  from_email: "maorlivne2@gmail.com"
   to_emails:
-    - "you@example.com"
+    - "maorlivne2@gmail.com"
 
 filters:
   must_include_keywords:
@@ -12,11 +12,11 @@ filters:
     - 'ת"א'
   exclude_keywords:
     - "מרתף"
-  min_rooms: 3
-  min_size_sqm: 120
-  max_price_nis: 30000
+  min_rooms: 2
+  min_size_sqm: 500
+  max_price_nis: 7000
 
 sources:
   - name: "Yad2 - יהודה מכבי 4-6 חדרים 18000 ומעלה"
-    url: "https://www.yad2.co.il/realestate/rent?minPrice=18000&minRooms=4&minSquaremeter=120&topArea=2&area=1&city=5000&neighborhood=1518&zoom=14&bBox=32.081062%2C34.769507%2C32.096520%2C34.795405"
+    url: "https://www.yad2.co.il/realestate/rent?zoom=14&topArea=2&area=1&city=5000&neighborhood=848"
     domain_hint: "yad2.co.il"
