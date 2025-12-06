@@ -2,7 +2,7 @@ name: Daily Rentals Digest
 
 on:
   schedule:
-    - cron: "30 5 * * *"  # ~07:30-08:30 Israel time depending on DST
+    - cron: "*/15 * * * *"  # Run every 15 minutes
   workflow_dispatch:
 
 jobs:
