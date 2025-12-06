@@ -18,7 +18,7 @@ filters:
 
 sources:
   - name: "Yad2 - נווה צדק 2+ חדרים עד 7000"
-    url: "https://www.yad2.co.il/realestate/rent?maxPrice=7000&minRooms=2&maxRooms=3&topArea=2&area=1&city=5000&neighborhood=848"
+    url: "https://www.yad2.co.il/realestate/rent?maxPrice=7000&minRooms=2&maxRooms=3&minSquareMeterBuild=50&topArea=2&area=1&city=5000&neighborhood=495"
     domain_hint: "yad2.co.il"
 
   - name: "Yad2 - שכונה נוספת 2+ חדרים עד 7000"
