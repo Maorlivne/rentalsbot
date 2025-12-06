@@ -17,6 +17,10 @@ filters:
   max_price_nis: 7000
 
 sources:
-  - name: "Yad2 - יהודה מכבי 4-6 חדרים 18000 ומעלה"
+  - name: "Yad2 - נווה צדק 2+ חדרים עד 7000"
     url: "https://www.yad2.co.il/realestate/rent?zoom=14&topArea=2&area=1&city=5000&neighborhood=848"
+    domain_hint: "yad2.co.il"
+
+  - name: "Yad2 - שכונה נוספת 2+ חדרים עד 7000"
+    url: "https://www.yad2.co.il/realestate/rent?zoom=15&topArea=2&area=1&city=5000&neighborhood=495"
     domain_hint: "yad2.co.il"
